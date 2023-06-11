@@ -7,12 +7,12 @@ import { Transition } from '@headlessui/react';
 
 export default function UpdateProfileInformation({ mustVerifyEmail, status, className }) {
     const user = usePage().props.auth.user;
-
     const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
         name: user.name,
         email: user.email,
+        age: user.age,
     });
-
+    
     const submit = (e) => {
         e.preventDefault();
         patch(route('profile.update'));
@@ -60,6 +60,21 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
 
                     <InputError className="mt-2" message={errors.email} />
                 </div>
+                <div>
+                    <InputLabel htmlFor="age" value="age" />
+                    <TextInput
+                        id="age"
+                        type="number"
+                        className="mt-1 block w-full"
+                        value={data.age}
+                        onChange={(e) => setData('age', e.target.value)}
+                        required
+                        autoComplete="age"
+                    />
+
+                    <InputError className="mt-2" message={errors.age} />
+                </div>
+
 
                 {mustVerifyEmail && user.email_verified_at === null && (
                     <div>
