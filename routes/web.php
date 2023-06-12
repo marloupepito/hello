@@ -17,13 +17,35 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+    // return Inertia::render('Welcome', [
+    //     'canLogin' => Route::has('login'),
+    //     'canRegister' => Route::has('register'),
+    //     'laravelVersion' => Application::VERSION,
+    //     'phpVersion' => PHP_VERSION,
+    // ]);
+    return Inertia::render('Index');
+})->name('Index');
+
+Route::get('/place_order', function () {
+    return Inertia::render('PlaceOrder/Layout');
+})->name('place_order');
+
+Route::get('/order_completed', function () {
+    return Inertia::render('OrderCompleted/Layout');
+})->name('order_completed');
+
+Route::get('/search_tickets', function () {
+    return Inertia::render('SearchTickets/Layout');
+})->name('search_tickets');
+
+Route::get('/upgrade_orders', function () {
+    return Inertia::render('UpgradeOrders/Layout');
+})->name('upgrade_orders');
+
+
+Route::get('/upgrade_place_order', function () {
+    return Inertia::render('UpgradePlaceOrder/Layout');
+})->name('upgrade_place_order');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -31,9 +53,8 @@ Route::get('/dashboard', function () {
 
 
 
-Route::get('/about', function () {
-    return Inertia::render('About/Layout');
-})->middleware(['auth', 'verified'])->name('about');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
