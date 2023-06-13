@@ -3,12 +3,13 @@ import IndexContentSections from "./Content/Sections";
 import IndexCheckoutSection from "./Content/Checkout";
 import ProductContentSections from "./Content/Products";
 import TopNavbar from "@/Components/TapNavbar";
-export default function IndexLayout() {
+export default function IndexLayout({ auth, mustVerifyEmail, status }) {
+    console.log(auth)
     return (
         <>
         <TopNavbar />
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 gap-4 mt-5">
+        <div className="container mx-auto px-4">
+            <div className="grid grid-cols-2 gap-4 mt-5">
                 <div>
                     <IndexContentSections />
                 </div>

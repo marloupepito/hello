@@ -3,23 +3,23 @@ import { Link } from '@inertiajs/react';
 function IndexCheckoutSection() {
     return (
         <>
-            <div class="w-full rounded overflow-hidden shadow-lg">
-                <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">Seats Pricing</div>
-                    <p class="text-gray-700 text-base">
-                        <div class="grid grid-cols-3 gap-4">
-                            <div class="font-bold">Price</div>
-                            <div class="font-bold">
+            <div className="w-full rounded overflow-hidden shadow-lg">
+                <div className="px-6 py-4">
+                    <div className="font-bold text-xl mb-2">Seats Pricing</div>
+                    <p className="text-gray-700 text-base">
+                        <div className="grid grid-cols-3 gap-4">
+                            <div className="font-bold">Price</div>
+                            <div className="font-bold">
                                 General Admission No Seat
                             </div>
-                            <div class="font-bold"></div>
+                            <div className="font-bold"></div>
                         </div>
-                        <div class="grid grid-cols-3 gap-4">
-                            <div class="mt-2">$ 60.00</div>
-                            <div class="...">
+                        <div className="grid grid-cols-3 gap-4">
+                            <div className="mt-2">$ 60.00</div>
+                            <div className="...">
                                 <select
                                     id="countries"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 >
                                     <option selected>Quantity</option>
                                     <option value="1">1</option>
@@ -34,52 +34,52 @@ function IndexCheckoutSection() {
                                     <option value="10">10</option>
                                 </select>
                             </div>
-                            <div class="...">
-                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <div className="...">
+                                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                     ADD TO CART
                                 </button>
                             </div>
                         </div>
-                        <hr class="h-px my-8 bg-black border-2 dark:bg-black" />
+                        <hr className="h-px my-8 bg-black border-2 dark:bg-black" />
                         <div className="...">
-                            <p class="font-bold text-2xl">Subtotal: 100</p>
+                            <p className="font-bold text-2xl">Subtotal: 100</p>
                         </div>
-                        <div class="rounded-t-xl overflow-hidden ">
-                            <table class="table-auto w-full">
+                        <div className="rounded-t-xl overflow-hidden ">
+                            <table className="table-auto w-full">
                                 <thead>
                                     <tr>
-                                        <th class="px-4 py-2 text-black">
+                                        <th className="px-4 py-2 text-black">
                                             Product Name
                                         </th>
-                                        <th class="px-4 py-2 text-black">
+                                        <th className="px-4 py-2 text-black">
                                             Section
                                         </th>
-                                        <th class="px-4 py-2 text-black">
+                                        <th className="px-4 py-2 text-black">
                                             Row
                                         </th>
-                                        <th class="px-4 py-2 text-black">
+                                        <th className="px-4 py-2 text-black">
                                             Seat
                                         </th>
-                                        <th class="px-4 py-2 text-black">
+                                        <th className="px-4 py-2 text-black">
                                             
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="bg-gray-200">
-                                        <td class="border border-black px-4 py-2 text-black font-medium">
+                                    <tr className="bg-gray-200">
+                                        <td className="border border-black px-4 py-2 text-black font-medium">
                                             A Long
                                         </td>
-                                        <td class="border border-black px-4 py-2 text-black font-medium">
+                                        <td className="border border-black px-4 py-2 text-black font-medium">
                                             Adam
                                         </td>
-                                        <td class="border border-black px-4 py-2 text-black font-medium">
+                                        <td className="border border-black px-4 py-2 text-black font-medium">
                                             112
                                         </td>
-                                        <td class="border border-black px-4 py-2 text-black font-medium">
+                                        <td className="border border-black px-4 py-2 text-black font-medium">
                                             112
                                         </td>
-                                        <td class="border border-black px-4 py-2 text-black font-medium">
+                                        <td className="border border-black px-4 py-2 text-black font-medium">
                                             delete
                                         </td>
                                     </tr>
@@ -87,7 +87,7 @@ function IndexCheckoutSection() {
                             </table>
                         </div>
                         <Link  href={route('upgrade_place_order')} >
-                        <button class="mt-5 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <button className="mt-5 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             CHECKOUT
                         </button>
                         </Link>

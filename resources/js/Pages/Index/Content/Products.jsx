@@ -3,56 +3,56 @@ import React, { useState, useEffect } from "react";
 function ProductContentSections() {
     return (
         <>
-            <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
-                <li class="mr-2">
+            <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+                <li className="mr-2">
                     <a
                         href="#"
-                        class="inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active"
+                        className="inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active"
                         aria-current="page"
                     >
                         Remaining
                     </a>
                 </li>
-                <li class="mr-2">
+                <li className="mr-2">
                     <a
                         href="#"
-                        class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
+                        className="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
                     >
                         Sold Out
                     </a>
                 </li>
             </ul>
 
-            <div class="rounded-t-xl overflow-hidden ">
-                <table class="table-auto w-full">
+            <div className="rounded-t-xl overflow-hidden ">
+                <table className="table-auto w-full">
                     <thead>
                         <tr>
-                            <th class="px-4 py-2 text-black">Product Name</th>
-                            <th class="px-4 py-2 text-black">Sections</th>
-                            <th class="px-4 py-2 text-black">Rows</th>
-                            <th class="px-4 py-2 text-black">Seats</th>
-                            <th class="px-4 py-2 text-black">Price</th>
-                            <th class="px-4 py-2 text-black"></th>
+                            <th className="px-4 py-2 text-black">Product Name</th>
+                            <th className="px-4 py-2 text-black">Sections</th>
+                            <th className="px-4 py-2 text-black">Rows</th>
+                            <th className="px-4 py-2 text-black">Seats</th>
+                            <th className="px-4 py-2 text-black">Price</th>
+                            <th className="px-4 py-2 text-black"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-gray-200">
-                            <td class="border border-black px-4 py-2 text-black font-medium">
+                        <tr className="bg-gray-200">
+                            <td className="border border-black px-4 py-2 text-black font-medium">
                                 A Long
                             </td>
-                            <td class="border border-black px-4 py-2 text-black font-medium">
+                            <td className="border border-black px-4 py-2 text-black font-medium">
                                 Adam
                             </td>
-                            <td class="border border-black px-4 py-2 text-black font-medium">
+                            <td className="border border-black px-4 py-2 text-black font-medium">
                                 112
                             </td>
-                            <td class="border border-black px-4 py-2 text-black font-medium">
+                            <td className="border border-black px-4 py-2 text-black font-medium">
                                 112
                             </td>
-                            <td class="border border-black px-4 py-2 text-black font-medium">
+                            <td className="border border-black px-4 py-2 text-black font-medium">
                                 112
                             </td>
-                            <td class="border border-black px-4 py-2 text-black font-medium">
+                            <td className="border border-black px-4 py-2 text-black font-medium">
                                 ADD TO CART
                             </td>
                         </tr>

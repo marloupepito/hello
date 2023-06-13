@@ -30,6 +30,6 @@
         </MixedArgument>
     </issueHandlers>
     <plugins>
-        <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
+        <pluginClass className="Psalm\PhpUnitPlugin\Plugin"/>
     </plugins>
 </psalm>
