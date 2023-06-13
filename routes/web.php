@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CartProductsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,15 +17,17 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
+//Route::get('/', function () {
     // return Inertia::render('Welcome', [
     //     'canLogin' => Route::has('login'),
     //     'canRegister' => Route::has('register'),
     //     'laravelVersion' => Application::VERSION,
     //     'phpVersion' => PHP_VERSION,
     // ]);
-    return Inertia::render('Index');
-})->name('Index');
+    // return Inertia::render('Index/Layout');
+// });
+
+Route::get('/', [CartProductsController::class, 'index'])->name('Index');
 
 Route::get('/place_order', function () {
     return Inertia::render('PlaceOrder/Layout');

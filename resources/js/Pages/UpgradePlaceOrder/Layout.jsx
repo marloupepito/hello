@@ -3,7 +3,7 @@ import TopNavbar from "@/Components/TapNavbar";
 import OrderSummarySection from "./Content/OrderSummary";
 import PaymentMethodSection from "./Content/PaymentMethod";
 import BackToCartSection from "./Content/BackToCart";
-export default function PlaceOrderLayout() {
+export default function PlaceOrderLayout(props) {
     return (
         <>
             <TopNavbar />

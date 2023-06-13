@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TopNavbar from "@/Components/TapNavbar";
 import {Link} from '@inertiajs/react';
 import SearchTicketsSection from './content/SearchTickets';
-function SearchTicketsLayout() {
+function SearchTicketsLayout(props) {
     return ( 
         <>
         <TopNavbar />

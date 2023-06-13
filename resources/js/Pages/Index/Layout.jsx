@@ -3,8 +3,8 @@ import IndexContentSections from "./Content/Sections";
 import IndexCheckoutSection from "./Content/Checkout";
 import ProductContentSections from "./Content/Products";
 import TopNavbar from "@/Components/TapNavbar";
-export default function IndexLayout({ auth, mustVerifyEmail, status }) {
-    console.log(auth)
+export default function IndexLayout(props) {
+   console.log(props)
     return (
         <>
         <TopNavbar />
