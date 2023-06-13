@@ -27,7 +27,13 @@ use Inertia\Inertia;
     // return Inertia::render('Index/Layout');
 // });
 
-Route::get('/', [CartProductsController::class, 'index'])->name('Index');
+    Route::get('/', [CartProductsController::class, 'index'])->name('Index');
+    Route::patch('/', [CartProductsController::class, 'index'])->name('Index');
+    Route::post('/', [CartProductsController::class, 'select'])->name('Index');
+    Route::put('/', [CartProductsController::class, 'noseat'])->name('Index');
+    // Route::patch('/add_noseat', [CartProductsController::class, 'add_noseat'])->name('Index');
+
+
 
 Route::get('/place_order', function () {
     return Inertia::render('PlaceOrder/Layout');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CartProducts;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Inertia\Inertia;
 
 class CartProductsController extends Controller
@@ -16,33 +17,84 @@ class CartProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    protected function generateRandomString($length) {
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        $randomString = '';
+        
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        
+        return $randomString;
+    }
+    protected function getAllSeats($section,$token,$noseat)
     {
-       $a = CartProducts::where([
-            ['client_id','=',$this->client_id],
-            ['venue_section_id','=',1],
+
+        
+        $products = CartProducts::where([
+            ['client_id', '=', $this->client_id],
+            ['venue_section_id', '=', $section],
         ])->get();
 
-        $b = CartProducts::where([
-            ['client_id','=',$this->client_id],
-            ['venue_section_id','=',2],
-        ])->get();
-
-        $c = CartProducts::where([
-            ['client_id','=',$this->client_id],
-            ['venue_section_id','=',3],
-        ])->get();
-
-        $d = CartProducts::where([
-            ['client_id','=',$this->client_id],
-            ['venue_section_id','=',4],
-        ])->get();
+        $cart = CartProducts::where([['token','<>',null],['token','=',$token],['client_id', '=', $this->client_id]])->get();
 
         return Inertia::render('Index/Layout', [
-            'seats' =>  [$a,$b,$c,$d],
+            'seats' =>  $products,
+            'selected' =>  $cart,
+            'noseat' =>  $noseat,
         ]);
-    }
 
+    }
+    public function index(Request $request)
+    {
+        
+        
+        $token = $request->session()->get('token');
+        $noseat= $request->session()->get('noseat');
+        $seats = $this->getAllSeats($request->section,$token, $noseat);
+        // if(count($seats->selected) === 0){
+        //     $request->session()->forget('token');
+        // }
+        return $seats;
+    }
+    
+    public function select_section(Request $request)
+    {
+        
+        
+        $token = $request->session()->get('token');
+        $noseat= $request->session()->get('noseat');
+        $seats = $this->getAllSeats($request->section,$token, $noseat);
+     
+        return $seats;
+    
+    }
+ 
+    public function noseat(Request $request){
+        if($request->type === 'add'){
+            $request->session()->put('noseat', $request->noseat);
+        }else{
+            $request->session()->forget('noseat');
+        }
+    }
+    public function select(Request $request)
+    {
+       
+
+        if($request->session()->get('token') === null){
+            $token = $this->generateRandomString(32);
+            $request->session()->put('token', $token);
+        }
+
+        if($request->select !== null){
+            CartProducts::where('cart_product_id',$request->select[0])->update([
+                'quantity' =>$request->select[2] === 0?1:0,
+                'token' => $request->select[2] === 0?null:$request->session()->get('token'),
+            ]);
+           return $this->getAllSeats($request->select[1],$request->session()->get('token'),$request->session()->get('noseat'));
+        }
+     
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -61,7 +113,7 @@ class CartProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**

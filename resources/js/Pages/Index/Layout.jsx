@@ -4,7 +4,10 @@ import IndexCheckoutSection from "./Content/Checkout";
 import ProductContentSections from "./Content/Products";
 import TopNavbar from "@/Components/TapNavbar";
 export default function IndexLayout(props) {
-   console.log(props)
+   
+   const seats = props.seats
+   const selected = props.selected
+   const noseat = props.noseat
     return (
         <>
         <TopNavbar />
@@ -14,10 +17,10 @@ export default function IndexLayout(props) {
                     <IndexContentSections />
                 </div>
                 <div>
-                    <IndexCheckoutSection />
+                    <IndexCheckoutSection selected={selected} noseat={noseat}/>
                 </div>
                 <div>
-                    <ProductContentSections />
+                    <ProductContentSections seats={seats}/>
                 </div>
             </div>
         </div>
