@@ -2,6 +2,7 @@ import TopNavbar from "@/Components/TapNavbar";
 import {Link} from '@inertiajs/react';
 import OrderCompletedSection from './Content/OrderCompleted';
 export default function OrderCompletedLayout(props) {
+   
     return (
         <>
         <TopNavbar />
@@ -11,7 +12,7 @@ export default function OrderCompletedLayout(props) {
                         <Link href={route('search_tickets')}  className="float-right bg-black hover:bg-black text-white font-bold py-2 px-4 rounded">Search Tickets</Link>
                     </div>
                     <div>
-                            <OrderCompletedSection />
+                            <OrderCompletedSection selected={selected} noseat={noseat}/>
                     </div>
                     <div>
                         <Link href={route('Index')} className="bg-black hover:bg-black text-white font-bold py-2 px-4 rounded">Next Order</Link>

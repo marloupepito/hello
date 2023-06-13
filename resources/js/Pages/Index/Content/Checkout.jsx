@@ -23,6 +23,7 @@ function IndexCheckoutSection({ selected,noseat }) {
 
     function cancelNoSeat(e) {
         e.preventDefault();
+        setNoSeatPrice(0)
         router.put('/',{
             noseat:data.noseat,
             type:'delete'
@@ -87,7 +88,7 @@ function IndexCheckoutSection({ selected,noseat }) {
                         <hr className="h-px my-8 bg-black border-2 dark:bg-black" />
                         <div className="...">
                             <p className="font-bold text-2xl">
-                                Subtotal: {subtotal +noseatPrice * 60}
+                                Subtotal: {subtotal + noseatPrice * 60}
                             </p>
                         </div>
                         <div className="rounded-t-xl overflow-hidden ">

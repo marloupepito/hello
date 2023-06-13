@@ -8,6 +8,7 @@ export default function IndexLayout(props) {
    const seats = props.seats
    const selected = props.selected
    const noseat = props.noseat
+   console.log('props',props)
     return (
         <>
         <TopNavbar />
@@ -15,12 +16,11 @@ export default function IndexLayout(props) {
             <div className="grid grid-cols-2 gap-4 mt-5">
                 <div>
                     <IndexContentSections />
+                    <br />
+                    <ProductContentSections seats={seats}/>
                 </div>
                 <div>
                     <IndexCheckoutSection selected={selected} noseat={noseat}/>
-                </div>
-                <div>
-                    <ProductContentSections seats={seats}/>
                 </div>
             </div>
         </div>

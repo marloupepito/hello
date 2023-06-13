@@ -6,19 +6,10 @@ function ProductContentSections({ seats }) {
         select: 0,
     });
     
-    // useEffect(() => {
-    //     // Disable scroll on component mount
-     
-    
-    //     // Enable scroll on component unmount
-    //     return () => {
-    //       document.body.style.overflow = 'auto';
-    //     };
-    //   }, []);
+   
 
      function submit(e){
         e.preventDefault();
-        
         post(route('Index'))
        
     }
@@ -89,10 +80,10 @@ function ProductContentSections({ seats }) {
                                       <td className="border border-black   text-black font-medium">
                                         <form onSubmit={submit}>
                                           <button
-                                          href="#"
+                                          disabled={res.quantity ===0?true:false}
                                             onClick={(e) => setData('select', [res.cart_product_id,res.venue_section_id,res.quantity])}
                                              class="bg-black p-1 w-full hover:bg-black text-white font-bold ">
-                                              ADD{res.quantity}
+                                              ADD
                                           </button>
                                         </form>
                                       </td>

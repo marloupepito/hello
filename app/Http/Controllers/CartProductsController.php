@@ -6,6 +6,8 @@ use App\Models\CartProducts;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\URL;
 use Inertia\Inertia;
 
 class CartProductsController extends Controller
@@ -27,7 +29,7 @@ class CartProductsController extends Controller
         
         return $randomString;
     }
-    protected function getAllSeats($section,$token,$noseat)
+    protected function getAllSeats($section,$token,$noseat,$path)
     {
 
         
@@ -37,11 +39,14 @@ class CartProductsController extends Controller
         ])->get();
 
         $cart = CartProducts::where([['token','<>',null],['token','=',$token],['client_id', '=', $this->client_id]])->get();
-
-        return Inertia::render('Index/Layout', [
+            
+        $location = $path === "/" ? 'Index/Layout' : ($path === 'place_order' ? 'PlaceOrder/Layout' : '');
+            
+        return Inertia::render($location, [
             'seats' =>  $products,
             'selected' =>  $cart,
             'noseat' =>  $noseat,
+            'location' =>$path
         ]);
 
     }
@@ -51,7 +56,7 @@ class CartProductsController extends Controller
         
         $token = $request->session()->get('token');
         $noseat= $request->session()->get('noseat');
-        $seats = $this->getAllSeats($request->section,$token, $noseat);
+        $seats = $this->getAllSeats($request->section,$token, $noseat,$request->path());
         // if(count($seats->selected) === 0){
         //     $request->session()->forget('token');
         // }
@@ -64,7 +69,7 @@ class CartProductsController extends Controller
         
         $token = $request->session()->get('token');
         $noseat= $request->session()->get('noseat');
-        $seats = $this->getAllSeats($request->section,$token, $noseat);
+        $seats = $this->getAllSeats($request->section,$token, $noseat,$request->path());
      
         return $seats;
     
@@ -91,7 +96,7 @@ class CartProductsController extends Controller
                 'quantity' =>$request->select[2] === 0?1:0,
                 'token' => $request->select[2] === 0?null:$request->session()->get('token'),
             ]);
-           return $this->getAllSeats($request->select[1],$request->session()->get('token'),$request->session()->get('noseat'));
+           return $this->getAllSeats($request->select[1],$request->session()->get('token'),$request->session()->get('noseat'),$request->path());
         }
      
     }

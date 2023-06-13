@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-function OrderSummarySection() {
+function OrderSummarySection({ selected, noseat }) {
+    console.log('dada',selected)
     return (
         <>
             <table className="table-auto w-full">
@@ -15,26 +16,36 @@ function OrderSummarySection() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr className="bg-gray-200">
-                        <td className="border px-4 py-2 text-black font-medium">
-                            A Long
-                        </td>
-                        <td className="border px-4 py-2 text-black font-medium">
-                            Adam
-                        </td>
-                        <td className="border px-4 py-2 text-black font-medium">
-                            112
-                        </td>
-                        <td className="border px-4 py-2 text-black font-medium">
-                            112
-                        </td>
-                        <td className="border px-4 py-2 text-black font-medium">
-                            delete
-                        </td>
-                        <td className="border px-4 py-2 text-black font-medium">
-                            delete
-                        </td>
-                    </tr>
+                    {selected.map((res) => (
+                        <tr className="bg-gray-200">
+                            <td className="border px-4 py-2 text-black font-medium">
+                              {res.product_name}( {res.venue_section_id === 1
+                                              ? "Section A"
+                                              : res.venue_section_id === 2
+                                              ? "Section B"
+                                              : res.venue_section_id === 3
+                                              ? "Section C"
+                                              : res.venue_section_id === 4
+                                              ? "Section D"
+                                              : ""}, Row {res.venue_row}, Seat {res.venue_seat}) 
+                            </td>
+                            <td className="border px-4 py-2 text-black font-medium">
+                              {res.price_sale}
+                            </td>
+                            <td className="border px-4 py-2 text-black font-medium">
+                                {res.price_fee}
+                            </td>
+                            <td className="border px-4 py-2 text-black font-medium">
+                                1
+                            </td>
+                            <td className="border px-4 py-2 text-black font-medium">
+                            {res.price_sale + res.price_fee}
+                            </td>
+                            <td className="border px-4 py-2 text-black font-medium">
+                                delete
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
             <div className="grid grid-cols-4 gap-4">
@@ -60,7 +71,7 @@ function OrderSummarySection() {
                             </tr>
                             <tr className="bg-gray-200">
                                 <td className="border px-4 py-2 text-black font-medium">
-                                Ticket Fee:	
+                                    Ticket Fee:
                                 </td>
                                 <td className="border px-4 py-2 text-black font-medium">
                                     Adam
@@ -68,7 +79,7 @@ function OrderSummarySection() {
                             </tr>
                             <tr className="bg-gray-200">
                                 <td className="border px-4 py-2 text-black font-medium">
-                                Transaction Fee:
+                                    Transaction Fee:
                                 </td>
                                 <td className="border px-4 py-2 text-black font-medium">
                                     Adam
@@ -76,7 +87,7 @@ function OrderSummarySection() {
                             </tr>
                             <tr className="bg-gray-200">
                                 <td className="border px-4 py-2 text-black font-medium">
-                                Discount:
+                                    Discount:
                                 </td>
                                 <td className="border px-4 py-2 text-black font-medium">
                                     Adam
@@ -84,7 +95,7 @@ function OrderSummarySection() {
                             </tr>
                             <tr className="bg-gray-200">
                                 <td className="border px-4 py-2 text-black font-medium">
-                                Grand Total:
+                                    Grand Total:
                                 </td>
                                 <td className="border px-4 py-2 text-black font-medium">
                                     Adam
