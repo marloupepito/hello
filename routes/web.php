@@ -33,11 +33,7 @@ use Inertia\Inertia;
     Route::put('/', [CartProductsController::class, 'noseat'])->name('Index');
     // Route::patch('/add_noseat', [CartProductsController::class, 'add_noseat'])->name('Index');
 
- //   Route::get('/place_order', [CartProductsController::class, 'index'])->name('Index');
-
-// Route::get('/place_order', function () {
-//     return Inertia::render('PlaceOrder/Layout');
-// })->name('place_order');
+    //Route::get('/place_order', [CartProductsController::class, 'index'])->name('Index');
 
     Route::get('/place_order', [CartProductsController::class, 'index'])->name('place_order');
 

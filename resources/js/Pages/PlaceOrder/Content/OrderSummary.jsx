@@ -1,7 +1,28 @@
 import React, { useState, useEffect } from "react";
 
 function OrderSummarySection({ selected, noseat }) {
-    console.log('dada',selected)
+    
+    function sumObjects1(objects, price) {
+        let sum = 0;
+        for (let i = 0; i < objects.length; i++) {
+          sum += objects[i][price] ;
+        }
+        return sum;
+      }
+
+      function sumObjects2(objects, price) {
+        let sum = 0;
+        for (let i = 0; i < objects.length; i++) {
+          sum += objects[i][price] ;
+        }
+        return sum;
+      }
+
+
+      const total = sumObjects1(selected, 'price_sale');
+      const fee = sumObjects2(selected, 'price_fee');
+      const subTotal = total+fee
+      console.log(subTotal);
     return (
         <>
             <table className="table-auto w-full">
@@ -66,7 +87,7 @@ function OrderSummarySection({ selected, noseat }) {
                                     Sub Total:
                                 </td>
                                 <td className="border px-4 py-2 text-black font-medium">
-                                    Adam
+                                    {subTotal}
                                 </td>
                             </tr>
                             <tr className="bg-gray-200">
@@ -74,7 +95,7 @@ function OrderSummarySection({ selected, noseat }) {
                                     Ticket Fee:
                                 </td>
                                 <td className="border px-4 py-2 text-black font-medium">
-                                    Adam
+                                    {fee}
                                 </td>
                             </tr>
                             <tr className="bg-gray-200">
